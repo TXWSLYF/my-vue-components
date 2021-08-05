@@ -1,19 +1,27 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <button @click="visible = !visible">点击</button>
+    <message-box-warning
+      title="标题"
+      :visible.sync="visible"
+      @cancel="visible = false"
+      @ok="visible = false"
+    />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import MessageBoxWarning from "./components/message-box-warning/message-box-warning.vue";
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+  name: "App",
+  data() {
+    return {
+      visible: false,
+    };
+  },
+  components: { MessageBoxWarning },
+};
 </script>
 
 <style>
